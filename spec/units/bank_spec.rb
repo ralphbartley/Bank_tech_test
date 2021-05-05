@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'bank'
 
 describe Bank do
   before(:each) do
-    @bank = Bank.new()
+    @bank = Bank.new
   end
 
   describe '.ledger' do
@@ -23,7 +25,7 @@ describe Bank do
     end
 
     it 'adds money to balance' do
-      expect(@bank.balance). to eq(1000)
+      expect(@bank.balance).to eq(1000)
     end
 
     it 'stores the date of the deposit' do
@@ -71,11 +73,7 @@ describe Bank do
 
     it 'prints the ledger contents in a date, credit, debit, balance column table' do
       output = "date || credit || debit || balance\n2021/05/05 || 1000 ||  || 1000\n2021/05/05 ||  || 500 || 500\n"
-      expect{ @bank.statement }.to output(output).to_stdout
+      expect { @bank.statement }.to output(output).to_stdout
     end
-
-
   end
-
-
 end
