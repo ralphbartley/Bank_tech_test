@@ -33,7 +33,7 @@ describe Bank do
     end
 
     it 'stores the type of transaction in the record' do
-      expect(@bank.ledger[0][1]).to eq("1000.00")
+      expect(@bank.ledger[0][1]).to eq('1000.00')
     end
 
     it 'stores the balance after the deposit' do
@@ -57,7 +57,7 @@ describe Bank do
     end
 
     it 'stores the type of transaction in the record' do
-      expect(@bank.ledger[1][2]).to eq("500.00")
+      expect(@bank.ledger[1][2]).to eq('500.00')
     end
 
     it 'stores the balance after the withdrawal' do
