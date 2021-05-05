@@ -33,12 +33,12 @@ describe Bank do
     end
 
     it 'stores the type of transaction in the record' do
-      expect(@bank.ledger[0][1]).to eq(1000)
+      expect(@bank.ledger[0][1]).to eq("1000.00")
     end
 
     it 'stores the balance after the deposit' do
       @bank.deposit(1000)
-      expect(@bank.ledger[1][3]).to eq(2000)
+      expect(@bank.ledger[1][3]).to eq(2000.00)
     end
   end
 
@@ -57,11 +57,11 @@ describe Bank do
     end
 
     it 'stores the type of transaction in the record' do
-      expect(@bank.ledger[1][2]).to eq(500)
+      expect(@bank.ledger[1][2]).to eq("500.00")
     end
 
     it 'stores the balance after the withdrawal' do
-      expect(@bank.ledger[1][3]).to eq(500)
+      expect(@bank.ledger[1][3]).to eq(500.00)
     end
   end
 
@@ -72,7 +72,7 @@ describe Bank do
     end
 
     it 'prints the ledger contents in a date, credit, debit, balance column table' do
-      output = "date || credit || debit || balance\n2021/05/05 || 1000 ||  || 1000\n2021/05/05 ||  || 500 || 500\n"
+      output = "date || credit || debit || balance\n2021/05/05 || 1000.00 ||  || 1000.00\n2021/05/05 ||  || 500.00 || 500.00\n"
       expect { @bank.statement }.to output(output).to_stdout
     end
   end

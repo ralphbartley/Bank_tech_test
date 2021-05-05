@@ -1,5 +1,15 @@
 How to use:
-
+Clone this repo, then run in IRB using the following as a guide:
+```
+% irb
+> require './lib/bank.rb'
+> bank = Bank.new()
+> bank.deposit(1000)
+> bank.deposit(1000)
+> bank.withdraw(500)
+> bank.statement
+```
+Date is the day that the deposit or withdrawal happens, so today.  I would add a configurable date if it mattered.
 
 How I built this:
 
