@@ -30,6 +30,19 @@ describe Bank do
     end
   end
 
+  describe '.withdraw' do
+    it 'subtracts money from balance' do
+      @bank.deposit(1000)
+      @bank.withdraw(500)
+      expect(@bank.balance).to eq(500)
+    end
+
+    it 'stores the date of the deposit' do
+      @bank.deposit(1000)
+      @bank.withdraw(500)
+      expect(@bank.ledger[1]).to eq([500, DateTime.now.to_date])
+    end
+  end
 
 
 end
