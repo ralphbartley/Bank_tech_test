@@ -9,12 +9,12 @@ class Bank
 
   def deposit(amount)
     @balance += amount
-    @ledger << [amount, DateTime.now.to_date]
+    @ledger << [DateTime.now.to_date, amount, nil, @balance]
   end
 
   def withdraw(amount)
     @balance -= amount
-    @ledger << [amount, DateTime.now.to_date]
+    @ledger << [DateTime.now.to_date, nil, amount, @balance]
   end
 
 end

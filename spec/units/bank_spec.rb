@@ -19,50 +19,45 @@ describe Bank do
   end
 
   describe '.deposit' do
-    it 'adds money to balance' do
+    before(:each) do
       @bank.deposit(1000)
+    end
+    it 'adds money to balance' do
       expect(@bank.balance). to eq(1000)
     end
 
     it 'stores the date of the deposit' do
-      @bank.deposit(1000)
-      expect(@bank.ledger.first).to eq([1000, DateTime.now.to_date])
+      expect(@bank.ledger[0][0]).to eq(DateTime.now.to_date)
     end
 
     it 'stores the type of transaction in the record' do
-      expect(@bank.ledger[1][2]).to eq("Deposit")
+      expect(@bank.ledger[0][1]).to eq(1000)
     end
 
     it 'stores the balance after the deposit' do
-      @bank.deposit(1000)
       @bank.deposit(1000)
       expect(@bank.ledger[1][3]).to eq(2000)
     end
   end
 
   describe '.withdraw' do
-    it 'subtracts money from balance' do
+    before(:each) do
       @bank.deposit(1000)
       @bank.withdraw(500)
+    end
+    it 'subtracts money from balance' do
       expect(@bank.balance).to eq(500)
     end
 
     it 'stores the date of the deposit' do
-      @bank.deposit(1000)
-      @bank.withdraw(500)
-      expect(@bank.ledger[1][0]).to eq(500)
-      expect(@bank.ledger[1][1]).to eq(DateTime.now.to_date)
+      expect(@bank.ledger[1][0]).to eq(DateTime.now.to_date)
     end
 
     it 'stores the type of transaction in the record' do
-      @bank.deposit(1000)
-      @bank.withdraw(500)
-      expect(@bank.ledger[1][2]).to eq("Withdrawal")
+      expect(@bank.ledger[1][2]).to eq(500)
     end
 
     it 'stores the balance after the withdrawal' do
-      @bank.deposit(1000)
-      @bank.withdraw(500)
       expect(@bank.ledger[1][3]).to eq(500)
     end
   end
