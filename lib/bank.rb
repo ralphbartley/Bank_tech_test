@@ -17,7 +17,7 @@ class Bank
   end
 
   def statement
-    puts Reporting.format(@ledger)
+    Reporting.format_records(@ledger)
   end
 
 private

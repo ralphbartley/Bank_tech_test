@@ -62,7 +62,7 @@ describe Bank do
     it 'sends the ledger to reporting for formatting' do
       bank = Bank.new
       format_count = 0
-      allow(Reporting).to receive(:format) { format_count += 1 }
+      allow(Reporting).to receive(:format_records) { format_count += 1 }
       bank.statement
       expect(format_count).to eq(1)
     end
