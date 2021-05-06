@@ -13,7 +13,8 @@ class Bank
   end
 
   def withdraw(amount)
-
+    transaction = Transaction.new(amount, "withdraw")
+    @ledger.record(transaction)
   end
 
   def statement

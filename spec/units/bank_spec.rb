@@ -12,12 +12,25 @@ describe Bank do
   end
 
   describe '.withdraw' do
-    it 'creates a transaction' do
+    before(:each) do
+      @count = 0
+      @ledger = instance_double("Ledger")
+      allow(@ledger).to receive(:record)
+      @transaction = instance_double("Transaction")
+      allow(Transaction).to receive(:new) do
+        @count += 1
+        @transaction
+      end
+      @bank = Bank.new(@ledger)
+      @bank.deposit(1000)
+    end
 
+    it 'creates a transaction' do
+      expect(@count).to eq 1
     end
 
     it 'adds a withdrawal transaction to the ledger' do
-
+      expect(@ledger).to have_received(:record)
     end
   end
 
