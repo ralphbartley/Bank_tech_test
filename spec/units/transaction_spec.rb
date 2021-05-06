@@ -6,20 +6,14 @@ describe Transaction do
 
   describe '.initialize' do
 
-    it 'sends the ledger a positive value for the amount' do
-
+    it 'creates a record for a deposit' do
+      transaction = Transaction.new(1000, 'deposit')
+      expect(transaction.record).to include(deposit_amount: 1000)
     end
 
-    it 'sends the ledger the date of the deposit' do
-
-    end
-
-    it 'sends the ledger a negative value for the amount' do
-
-    end
-
-    it 'sends the ledger the date of the withdrawal' do
-
+    it 'creates a record for a withdrawal' do
+      transaction = Transaction.new(1000, 'withdraw')
+      expect(transaction.record).to include(withdraw_amount: 1000)
     end
   end
 end

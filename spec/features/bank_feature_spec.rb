@@ -19,9 +19,10 @@ describe Bank do
 
   describe '.deposit' do
     # with no mocking this has to go from Bank -> Transaction -> Ledger
-    # @bank = Bank.new
-    # @bank.deposit(1000)
+
     it 'adds money to the account' do
+      @bank = Bank.new
+      @bank.deposit(1000)
       expect(@bank.ledger.balance).to eq(1000)
     end
   end

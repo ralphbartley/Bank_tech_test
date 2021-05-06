@@ -1,4 +1,5 @@
 require 'ledger'
+require 'transaction'
 
 class Bank
   attr_reader :ledger
