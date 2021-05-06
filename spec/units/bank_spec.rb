@@ -17,15 +17,28 @@ describe Bank do
     it 'removes an amount from the bank account' do
 
     end
-  end
 
-  describe '.deposit' do
-    it 'adds an amount to the bank account' do
+    it 'is recorded in the ledger' do
 
     end
   end
 
+  describe '.deposit' do
+    before(:each) do
+      @bank.deposit(1000)
+    end
+
+    it 'adds an amount to the bank account' do
+      expect(@bank.ledger.balance).to eq(1000)
+    end
+
+    it 'is recorded in the ledger' do
+      expect(@bank.ledger.recor
+    end
+  end
+
   describe '.statement' do
+    # mock
     it 'prints a formatted ledger history' do
 
     end

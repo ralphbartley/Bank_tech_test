@@ -3,7 +3,7 @@ require 'date'
 class Ledger
 
   def initialize
-    @ledger = []
+    @records = []
     @balance = 0
   end
 

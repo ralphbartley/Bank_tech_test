@@ -1,4 +1,5 @@
 class Bank
+  attr_reader :ledger
 
   def initialize
     @ledger = Ledger.new
