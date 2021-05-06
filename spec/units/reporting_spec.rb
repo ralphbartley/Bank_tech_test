@@ -15,5 +15,3 @@ describe Reporting do
     end
   end
 end
-
-output = 'date || credit || debit || balance'
