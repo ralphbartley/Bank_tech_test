@@ -1,6 +1,7 @@
 require 'date'
 
 class Ledger
+  attr_reader :balance
 
   def initialize
     @records = []

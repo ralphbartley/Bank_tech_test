@@ -3,37 +3,44 @@
 require 'bank'
 
 describe Bank do
-  before(:each) do
-    @bank = Bank.new
-  end
 
   describe '.initialize' do
     it 'starts with a Ledger' do
+      @bank = Bank.new
       expect(@bank.ledger).to be_a Ledger
     end
   end
 
   describe '.withdraw' do
-    it 'removes an amount from the bank account' do
+    it 'creates a transaction' do
 
     end
 
-    it 'is recorded in the ledger' do
+    it 'adds a withdrawal transaction to the ledger' do
 
     end
   end
 
   describe '.deposit' do
     before(:each) do
+      @count = 0
+      @ledger = instance_double("Ledger")
+      allow(@ledger).to receive(:record)
+      @transaction = instance_double("Transaction")
+      allow(Transaction).to receive(:new) do
+        @count += 1
+        @transaction
+      end
+      @bank = Bank.new(@ledger)
       @bank.deposit(1000)
     end
 
-    it 'adds an amount to the bank account' do
-      expect(@bank.ledger.balance).to eq(1000)
+    it 'adds a deposit transaction to the ledger' do
+      expect(@ledger).to have_received(:record)
     end
 
-    it 'is recorded in the ledger' do
-      expect(@bank.ledger.recor
+    it 'creates a transaction' do
+      expect(@count).to eq 1
     end
   end
 
