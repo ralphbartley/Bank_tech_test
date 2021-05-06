@@ -8,13 +8,11 @@ class Bank
   end
 
   def deposit(amount)
-    transaction = Transaction.new(amount, "deposit")
-    @ledger.record(transaction)
+    post_transaction(amount, "deposit")
   end
 
   def withdraw(amount)
-    transaction = Transaction.new(amount, "withdraw")
-    @ledger.record(transaction)
+    post_transaction(amount, "withdraw")
   end
 
   def statement
@@ -23,8 +21,9 @@ class Bank
 
 private
 
-  def post_transaction(amount)
-
+  def post_transaction(amount, type)
+    transaction = Transaction.new(amount, type)
+    @ledger.record(transaction)
   end
 
 end
